@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Smallifier": {
+      "commandName": "Project",
+      "commandLineArgs": "C:\\Users\\Aan\\Videos\\test.mp4 -s \"8 MB\" --name \"%name%-8mb_%hour%%minute%%second%\" C:\\Users\\Aan\\Desktop\\poggers.mp4"
+    }
+  }
+}

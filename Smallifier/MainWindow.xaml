@@ -1,0 +1,50 @@
+﻿<Window x:Class="Smallifier.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Smallifier"
+        mc:Ignorable="d"
+        Title="Smallifier" Height="320" Width="400" Background="White" Padding="24"  SizeToContent="WidthAndHeight">
+    <StackPanel Visibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Border BorderBrush="Black" BorderThickness="1" Margin="24, 24, 24, 0" Padding="0, 24, 0, 24" MaxHeight="120"  Opacity="0.5">
+            <StackPanel
+                AllowDrop="True"
+                Background="White"
+                Drop="FileDropStackPanel_Drop"
+                >
+                <Label Content="Drop your video here!" HorizontalAlignment="Center"/>
+                <Separator/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Content="or choose a file" HorizontalAlignment="Left"/>
+                    <Button x:Name="SelectFileButton" Content="Select" Width="48" Height="20" Click="ChooseFileButton_Click" Background="#FFC5C5C5" BorderBrush="Black" FontWeight="Normal" FontStyle="Normal"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Label x:Name="fileNameLabel" Margin="24, 0" Content="" FontSize="12"/>
+        <StackPanel Orientation="Horizontal" Margin="24,24" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel HorizontalAlignment="Stretch">
+                <Label Content="Target Size" HorizontalAlignment="Stretch"  VerticalAlignment="Top" FontSize="12"/>
+                <TextBox x:Name="FileTargetSizeBox" Text="8 MB" TextWrapping="Wrap" Width="67"/>
+            </StackPanel>
+            <Separator/>
+            <StackPanel Margin="16,0" HorizontalAlignment="Stretch">
+                <Label Content="Trim Video (HH:MM:SS)"></Label>
+                <StackPanel Orientation="Horizontal">
+                    <Label Height="18" Padding="4,0,4,2">Start</Label>
+                    <Grid Height="18">
+                        <TextBox IsEnabled="False" x:Name="StartTimeTextBox" Width="54" TextAlignment="Right" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Label Height="18" Padding="4,0,4,2">End
+                    </Label>
+                    <TextBox IsEnabled="False" x:Name="EndTimeTextBox" Width="54" TextAlignment="Right" VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+            <Button IsEnabled="False" x:Name="SaveButton" Content="Save As" Click="SaveButton_Click" Width="64" VerticalAlignment="Bottom"/>
+        </StackPanel>
+        <Grid x:Name="ProgressBarWrapper" Margin="20" Visibility="Hidden">
+            <ProgressBar x:Name="ProgessBarStatus" Minimum="0" Maximum="100" Value="0"/>
+            <TextBlock Text="{Binding ElementName=ProgessBarStatus, Path=Value, StringFormat={}{0:0}%}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        </Grid>
+    </StackPanel>
+</Window>
